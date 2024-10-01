@@ -71,9 +71,6 @@ class EmailProcessorGUI(QMainWindow):
         right_panel = QWidget()
         right_layout = QVBoxLayout(right_panel)
 
-        email_details_label = QLabel("Email Details:")
-        right_layout.addWidget(email_details_label)
-
         self.subject_label = QLabel("Subject: ")
         self.subject_label.setFont(QFont("SF Pro Display", 16, QFont.Bold))
         right_layout.addWidget(self.subject_label)
@@ -81,6 +78,10 @@ class EmailProcessorGUI(QMainWindow):
         self.sender_label = QLabel("Sender: ")
         self.sender_label.setFont(QFont("SF Pro Text", 14))
         right_layout.addWidget(self.sender_label)
+
+        self.sent_time_label = QLabel("Sent Time: ")
+        self.sent_time_label.setFont(QFont("SF Pro Text", 14))
+        right_layout.addWidget(self.sent_time_label)
 
         content_label = QLabel("Email Content:")
         right_layout.addWidget(content_label)
@@ -125,6 +126,7 @@ class EmailProcessorGUI(QMainWindow):
         
         self.subject_label.setText(f"Subject: {email_data['subject']}")
         self.sender_label.setText(f"Sender: {email_data['sender_name']} <{email_data['sender_address']}>")
+        self.sent_time_label.setText(f"Sent Time: {email_data['sent_time']}")
         self.content_text.setText(email_data['cleaned_content'])
 
 if __name__ == '__main__':
